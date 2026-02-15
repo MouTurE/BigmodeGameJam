@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dxn3g4ponsipb"]
+
+[ext_resource type="Script" uid="uid://dt3pchm8vu5n1" path="res://Scripts/EnemyAI.gd" id="1_3ma0f"]
+[ext_resource type="Texture2D" uid="uid://efh303bhoc6h" path="res://icon.svg" id="2_u3kpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(125.24271, 114.15929)
+
+[node name="EnemyAI" type="Node2D" unique_id=1681171232]
+script = ExtResource("1_3ma0f")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1348331549]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=783644693]
+texture = ExtResource("2_u3kpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1601063212]
+position = Vector2(0.49996948, 0.69999695)
+scale = Vector2(1.03, 1.13)
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="Timer" type="Timer" parent="." unique_id=1359130202]
+wait_time = 5.0
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

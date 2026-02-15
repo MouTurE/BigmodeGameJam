@@ -1,0 +1,256 @@
+[gd_scene format=3 uid="uid://d2hiq6d65ed4"]
+
+[ext_resource type="Script" uid="uid://b6wlh3k4mu4dg" path="res://Scenes/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://dyk5da7u028ci" path="res://GameArt/Monster.png" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://ktry3oi4jbu" path="res://GameArt/Newspaper.png" id="2_48xlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_28flt"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
+line_spacing = 1.0
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
+font_size = 45
+
+[sub_resource type="Animation" id="Animation_28flt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Newspaper/NewspaperSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ce3w2"]
+resource_name = "newspaper"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Newspaper/NewspaperSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_48xlc"]
+resource_name = "newspaperFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Newspaper/NewspaperSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ehe0"]
+_data = {
+&"RESET": SubResource("Animation_28flt"),
+&"newspaperFadeIn": SubResource("Animation_ce3w2"),
+&"newspaperFadeOut": SubResource("Animation_48xlc")
+}
+
+[node name="MainMenu" type="Node2D" unique_id=113367246]
+script = ExtResource("1_28flt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998927150]
+
+[node name="Main" type="Control" parent="CanvasLayer" unique_id=1248985258]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main" unique_id=1296733872]
+layout_mode = 0
+offset_left = 646.0
+offset_top = -4.0
+offset_right = 1798.0
+offset_bottom = 644.0
+texture = ExtResource("2_1ehe0")
+expand_mode = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Main" unique_id=1081791483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.25
+offset_top = -15.5
+offset_right = 149.25
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="InstructionsButton" type="Button" parent="CanvasLayer/Main" unique_id=923991538]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.25
+offset_top = 28.5
+offset_right = 149.25
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "How To Play"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Main" unique_id=1187743446]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.25
+offset_top = 72.5
+offset_right = 149.25
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="GameTitle" type="Label" parent="CanvasLayer/Main" unique_id=798370924]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.5
+offset_top = 74.0
+offset_right = 121.5
+offset_bottom = 269.0
+grow_horizontal = 2
+text = "A Night
+At
+Slick Sally's"
+label_settings = SubResource("LabelSettings_28flt")
+horizontal_alignment = 1
+
+[node name="Newspaper" type="Control" parent="CanvasLayer" unique_id=1900789687]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 13.0
+offset_bottom = -9.0
+
+[node name="NewspaperSprite" type="TextureRect" parent="CanvasLayer/Newspaper" unique_id=2143086245]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("2_48xlc")
+
+[node name="Control" type="Control" parent="CanvasLayer/Newspaper" unique_id=325342527]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Newspaper/Control" unique_id=2057205465]
+layout_mode = 0
+offset_left = 689.99994
+offset_top = 234.00002
+offset_right = 994.24243
+offset_bottom = 639.00006
+rotation = -0.09114327
+text = "A food truck business Slick Sally's looking for a cleaner to work at midnight. 
+From 12 am to 6 am.
+
+Clean the interior.
+Keep it slick as posible.
+Mascot Sally will be ecstatic to spent time with you.
+
+Not responsible for injuries.
+$25 a day"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Instructions" type="Control" parent="CanvasLayer" unique_id=49234335]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Instructions" unique_id=1230677603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.045
+offset_right = 0.045043945
+grow_horizontal = 2
+grow_vertical = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_48xlc")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Instructions" unique_id=803346466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Check the floor and window for abnormalities. You have a limited time to react. 
+Keep the floor clean and slick. They don't like lights, so make sure you use your flashlight.  
+
+Controls:
+[Left Mouse] - Inspect / Drag Cleaning Mop 
+[Space] - Toggle Flashlight On Window
+
+Survive the night until 6 AM. Good luck!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Instructions" unique_id=657348843]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.757
+anchor_right = 0.5
+anchor_bottom = 0.757
+offset_left = -149.25
+offset_top = -15.536011
+offset_right = 149.25
+offset_bottom = 15.463989
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=391367845]
+libraries/ = SubResource("AnimationLibrary_1ehe0")
+
+[connection signal="pressed" from="CanvasLayer/Main/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/InstructionsButton" to="." method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Instructions/BackButton" to="." method="_on_back_button_pressed"]

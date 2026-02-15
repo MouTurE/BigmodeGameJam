@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ribt25ya3i5o"]
+
+[ext_resource type="Script" uid="uid://dubwlqpux2ryr" path="res://Scripts/timer.gd" id="1_mf2t3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mf2t3"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="UserInterface" type="Control" unique_id=1825818504]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mf2t3")
+
+[node name="Label" type="Label" parent="." unique_id=1144276559]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "12 AM"
+horizontal_alignment = 2
+
+[node name="ClockTimer" type="Timer" parent="." unique_id=210825434]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=143587585]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -539.0
+offset_top = -56.0
+offset_right = 539.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=382105062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 11.5)
+text = "<"
+label_settings = SubResource("LabelSettings_mf2t3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="ClockTimer" to="." method="_on_timer_timeout"]

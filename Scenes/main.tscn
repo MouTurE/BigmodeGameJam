@@ -1,0 +1,478 @@
+[gd_scene format=3 uid="uid://svlkarkrh5si"]
+
+[ext_resource type="Script" uid="uid://dubwlqpux2ryr" path="res://Scripts/timer.gd" id="1_jkdf5"]
+[ext_resource type="Script" uid="uid://dt3pchm8vu5n1" path="res://Scripts/EnemyAI.gd" id="2_wsu2k"]
+[ext_resource type="Script" uid="uid://cmv08nto87fbf" path="res://Scripts/area.gd" id="3_k12tt"]
+[ext_resource type="Texture2D" uid="uid://b6qtovssnh6xt" path="res://GameArt/CaravanInterior.png" id="4_hibaj"]
+[ext_resource type="Texture2D" uid="uid://dluj30yofhrup" path="res://GameArt/Floor.png" id="5_b3802"]
+[ext_resource type="Texture2D" uid="uid://bglu4w5cilaot" path="res://GameArt/Mop.png" id="6_b3802"]
+[ext_resource type="Texture2D" uid="uid://xg4m5kck4q2f" path="res://GameArt/MopContainer.png" id="6_fevyy"]
+[ext_resource type="Texture2D" uid="uid://bgi3xsvu23fbl" path="res://GameArt/FloorMess.png" id="8_b3802"]
+[ext_resource type="Script" uid="uid://bmt0bg75l5vr3" path="res://Scripts/drag_object.gd" id="8_pdsj5"]
+[ext_resource type="Script" uid="uid://bgllh31ecpvet" path="res://Scripts/window.gd" id="10_gt3je"]
+[ext_resource type="Texture2D" uid="uid://bc2msn4sc3mh" path="res://GameArt/Forest.png" id="11_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://dyk5da7u028ci" path="res://GameArt/Monster.png" id="12_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://cmmoxcrumovf5" path="res://GameArt/Window.png" id="13_hibaj"]
+[ext_resource type="AudioStream" uid="uid://d2ltngpye0j4j" path="res://SoundEffects/varrendo-101422.mp3" id="14_1w6v2"]
+[ext_resource type="AudioStream" uid="uid://bxn5p3c25c3ew" path="res://SoundEffects/freesounds123-jumpscare-v3-335600.mp3" id="14_ee4r6"]
+[ext_resource type="AudioStream" uid="uid://c2nyff2f3sj4m" path="res://SoundEffects/flashlight-switch-102792.mp3" id="15_wsu2k"]
+[ext_resource type="AudioStream" uid="uid://dtw36sm6o3ixu" path="res://SoundEffects/angry-grunt-103204.mp3" id="16_k12tt"]
+[ext_resource type="AudioStream" uid="uid://blk1nkeyd63gf" path="res://SoundEffects/animalistic-grunt-463204 (1).mp3" id="17_h1bgf"]
+[ext_resource type="AudioStream" uid="uid://bfrbcajr0ccwy" path="res://SoundEffects/ambience-night-field-cricket-01-7015.mp3" id="18_b3802"]
+[ext_resource type="AudioStream" uid="uid://r6pxuqwhg38x" path="res://SoundEffects/st3-footstep-sfx-323056.mp3" id="19_fevyy"]
+[ext_resource type="AudioStream" uid="uid://c0rsoqsfs3lvw" path="res://SoundEffects/JumpscareSFX.mp3" id="21_ee4r6"]
+[ext_resource type="Texture2D" uid="uid://xhpp3facaq0n" path="res://GameArt/LightTexture.png" id="21_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://clf438c3a71cv" path="res://GameArt/BloodScreen.jpg" id="22_gt3je"]
+[ext_resource type="AudioStream" uid="uid://cx8x3yrgr20wj" path="res://SoundEffects/WinSound.mp3" id="24_3pmx8"]
+
+[sub_resource type="Gradient" id="Gradient_3pmx8"]
+offsets = PackedFloat32Array(0.009569378, 0.35885167, 0.71291864, 0.97607654)
+colors = PackedColorArray(0.44, 1, 0.55200005, 1, 1, 0, 0, 1, 0, 0.5999999, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gt3je"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mf2t3"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(318.00012, 353.00012)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(1713.3333, 1077.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(295.96674, 649.72284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(968.3334, 955)
+
+[sub_resource type="Animation" id="Animation_pdsj5"]
+resource_name = "Jumpscare"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jumpscare/JumpscareSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jumpscare/JumpscareSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Jumpscare/JumpscareSprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1, 0.16666667, 0.23333333, 0.33333337, 0.4, 0.4666667, 0.5333333, 0.6333333, 0.6999999, 0.76666665, 0.83333325),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, 20), Vector2(-20, -20), Vector2(0, 0), Vector2(0, 0), Vector2(20, 20), Vector2(-20, -20), Vector2(0, 0), Vector2(0, 0), Vector2(20, 20), Vector2(-20, -20), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Jumpscare/BloodScreen:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2333332, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Jumpscare/JumpscareSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_ee4r6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jumpscare/JumpscareSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jumpscare/JumpscareSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Jumpscare/JumpscareSprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Jumpscare/BloodScreen:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Jumpscare/JumpscareSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gt3je"]
+_data = {
+&"Jumpscare": SubResource("Animation_pdsj5"),
+&"RESET": SubResource("Animation_ee4r6")
+}
+
+[node name="main" type="Node2D" unique_id=226836632]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1898127815]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=137492000]
+layer = 0
+
+[node name="UserInterface" type="Control" parent="Camera2D/CanvasLayer" unique_id=1825818504 node_paths=PackedStringArray("enemyTimer", "cameraNode", "lightNode", "winSound")]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jkdf5")
+seconds2hour = 20
+enemyTimer = NodePath("../../../EnemyAI/ActionTimer")
+cameraNode = NodePath("../..")
+lightNode = NodePath("../../../PointLight2D")
+winSound = NodePath("../../../WinSound")
+
+[node name="Confetti" type="CPUParticles2D" parent="Camera2D/CanvasLayer/UserInterface" unique_id=1710836362]
+z_index = 1
+position = Vector2(566, 287)
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 403.22
+initial_velocity_max = 768.07
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color_initial_ramp = SubResource("Gradient_3pmx8")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="BlackScreen" type="ColorRect" parent="Camera2D/CanvasLayer/UserInterface" unique_id=482401148]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ClockText" type="Label" parent="Camera2D/CanvasLayer/UserInterface" unique_id=1144276559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 2
+text = "12 AM"
+label_settings = SubResource("LabelSettings_gt3je")
+horizontal_alignment = 2
+
+[node name="ClockTimer" type="Timer" parent="Camera2D/CanvasLayer/UserInterface" unique_id=210825434]
+
+[node name="GoBackZone" type="Button" parent="Camera2D/CanvasLayer/UserInterface" unique_id=1507966907]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -539.0
+offset_top = -56.0
+offset_right = 539.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer/UserInterface/GoBackZone" unique_id=120843038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5689727, 0.56897277, 0.5689727, 1)
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer/UserInterface/GoBackZone" unique_id=382105062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(20, 11.5)
+text = "<"
+label_settings = SubResource("LabelSettings_mf2t3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyAI" type="Node2D" parent="." unique_id=1681171232 node_paths=PackedStringArray("dragObject", "gameObject", "windowObject", "JumpscareAnimation", "alertSound")]
+top_level = true
+position = Vector2(0, -2)
+script = ExtResource("2_wsu2k")
+dragObject = NodePath("../Floor/DragObject")
+gameObject = NodePath("../Camera2D/CanvasLayer/UserInterface")
+windowObject = NodePath("../Window")
+JumpscareAnimation = NodePath("../AnimationPlayer")
+alertSound = NodePath("../AlertPlayer")
+
+[node name="ActionTimer" type="Timer" parent="EnemyAI" unique_id=1359130202]
+wait_time = 5.0
+
+[node name="AttackTimer" type="Timer" parent="EnemyAI" unique_id=14696987]
+wait_time = 5.0
+one_shot = true
+
+[node name="MainArea" type="Node2D" parent="." unique_id=1180442570 node_paths=PackedStringArray("goBackNode", "floorNode", "windowNode", "lightNode", "footstepSound") groups=["Area"]]
+script = ExtResource("3_k12tt")
+goBackNode = NodePath("../Camera2D/CanvasLayer/UserInterface/GoBackZone")
+floorNode = NodePath("../Floor")
+windowNode = NodePath("../Window")
+lightNode = NodePath("../PointLight2D")
+footstepSound = NodePath("../Footstep")
+
+[node name="Background" type="Sprite2D" parent="MainArea" unique_id=1946151654]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_hibaj")
+
+[node name="FloorSprite" type="Sprite2D" parent="MainArea" unique_id=2024982147]
+position = Vector2(-1, 161)
+
+[node name="FloorArea2D" type="Area2D" parent="MainArea/FloorSprite" unique_id=814395456]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainArea/FloorSprite/FloorArea2D" unique_id=191643625]
+position = Vector2(2, 37.5)
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="WindowSprite" type="Sprite2D" parent="MainArea" unique_id=1208172149]
+position = Vector2(497, -161)
+scale = Vector2(0.3, 0.3)
+
+[node name="WindowArea2D" type="Area2D" parent="MainArea/WindowSprite" unique_id=2115227566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainArea/WindowSprite/WindowArea2D" unique_id=1907867056]
+position = Vector2(-250, 64.58331)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Floor" type="Node2D" parent="." unique_id=282460574 groups=["Area"]]
+visible = false
+
+[node name="Floor" type="Sprite2D" parent="Floor" unique_id=647128902]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_b3802")
+
+[node name="Mop Container" type="Sprite2D" parent="Floor" unique_id=1862255613]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_fevyy")
+
+[node name="DragObject" type="Sprite2D" parent="Floor" unique_id=1710986338 node_paths=PackedStringArray("enemyNode", "messNode", "cleaningSound")]
+position = Vector2(-398, -8)
+scale = Vector2(0.6, 0.562)
+texture = ExtResource("6_b3802")
+script = ExtResource("8_pdsj5")
+enemyNode = NodePath("../../EnemyAI")
+messNode = NodePath("../Mess")
+cleaningSound = NodePath("../../FloorWipe")
+
+[node name="Area2D" type="Area2D" parent="Floor/DragObject" unique_id=1503805565]
+position = Vector2(-3.3333337, 206.4057)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/DragObject/Area2D" unique_id=2097515427]
+scale = Vector2(0.9999998, 1)
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="Mess" type="Sprite2D" parent="Floor" unique_id=1688510333]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_b3802")
+
+[node name="Area2D" type="Area2D" parent="Floor/Mess" unique_id=593833390]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Mess/Area2D" unique_id=1161425930]
+position = Vector2(72.5, -87.499985)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="Window" type="Node2D" parent="." unique_id=1322719373 node_paths=PackedStringArray("flashlightAudio", "enemyGrunt", "enemyGrunt2", "enemyNode", "lightNode") groups=["Area"]]
+visible = false
+script = ExtResource("10_gt3je")
+flashlightAudio = NodePath("../Flashlight")
+enemyGrunt = NodePath("../EnemyGrunt")
+enemyGrunt2 = NodePath("../EnemyGrunt2")
+enemyNode = NodePath("../EnemyAI")
+lightNode = NodePath("../PointLight2D")
+
+[node name="ForestImage" type="Sprite2D" parent="Window" unique_id=120077146]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(69, -56)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_pdsj5")
+
+[node name="MonsterImage" type="Sprite2D" parent="Window" unique_id=244329708]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(54, -45)
+rotation = -0.12543531
+texture = ExtResource("12_pdsj5")
+
+[node name="WindowFrame" type="Sprite2D" parent="Window" unique_id=390519895]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_hibaj")
+
+[node name="AlertPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1997256148]
+stream = ExtResource("14_ee4r6")
+volume_db = -10.0
+
+[node name="FloorWipe" type="AudioStreamPlayer2D" parent="." unique_id=1838940081]
+stream = ExtResource("14_1w6v2")
+volume_db = 15.0
+
+[node name="Flashlight" type="AudioStreamPlayer2D" parent="." unique_id=166921620]
+stream = ExtResource("15_wsu2k")
+volume_db = 15.0
+
+[node name="EnemyGrunt" type="AudioStreamPlayer2D" parent="." unique_id=485660764]
+stream = ExtResource("16_k12tt")
+volume_db = 5.0
+
+[node name="EnemyGrunt2" type="AudioStreamPlayer2D" parent="." unique_id=1479535044]
+stream = ExtResource("17_h1bgf")
+volume_db = -5.0
+
+[node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="." unique_id=2021905267]
+stream = ExtResource("18_b3802")
+autoplay = true
+
+[node name="Footstep" type="AudioStreamPlayer2D" parent="." unique_id=548446211]
+stream = ExtResource("19_fevyy")
+volume_db = -5.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=927239560]
+color = Color(0.38, 0.38, 0.38, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1408361993]
+texture = ExtResource("21_pdsj5")
+texture_scale = 12.0
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1674657097]
+libraries/ = SubResource("AnimationLibrary_gt3je")
+
+[node name="Jumpscare" type="Node2D" parent="." unique_id=291649094]
+
+[node name="JumpscareSound" type="AudioStreamPlayer2D" parent="Jumpscare" unique_id=1120613362]
+stream = ExtResource("21_ee4r6")
+volume_db = -15.0
+
+[node name="JumpscareSprite" type="Sprite2D" parent="Jumpscare" unique_id=1142263224]
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_pdsj5")
+
+[node name="BloodScreen" type="Sprite2D" parent="Jumpscare" unique_id=720909136]
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("22_gt3je")
+
+[node name="WinSound" type="AudioStreamPlayer2D" parent="." unique_id=1155485602]
+stream = ExtResource("24_3pmx8")
+volume_db = -17.0
+
+[connection signal="timeout" from="Camera2D/CanvasLayer/UserInterface/ClockTimer" to="Camera2D/CanvasLayer/UserInterface" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyAI/ActionTimer" to="EnemyAI" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyAI/AttackTimer" to="EnemyAI" method="_on_attack_timer_timeout"]
+[connection signal="input_event" from="MainArea/FloorSprite/FloorArea2D" to="MainArea" method="_on_floor_area_2d_input_event"]
+[connection signal="mouse_entered" from="MainArea/FloorSprite/FloorArea2D" to="MainArea" method="_on_floor_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MainArea/FloorSprite/FloorArea2D" to="MainArea" method="_on_floor_area_2d_mouse_exited"]
+[connection signal="input_event" from="MainArea/WindowSprite/WindowArea2D" to="MainArea" method="_on_window_area_2d_input_event"]
+[connection signal="mouse_entered" from="MainArea/WindowSprite/WindowArea2D" to="MainArea" method="_on_floor_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="MainArea/WindowSprite/WindowArea2D" to="MainArea" method="_on_floor_area_2d_mouse_exited"]
+[connection signal="input_event" from="Floor/DragObject/Area2D" to="Floor/DragObject" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Floor/DragObject/Area2D" to="Floor/DragObject" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Floor/DragObject/Area2D" to="Floor/DragObject" method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="Floor/Mess/Area2D" to="Floor/DragObject" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Floor/Mess/Area2D" to="Floor/DragObject" method="_on_area_2d_area_exited"]
